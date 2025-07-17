@@ -1,37 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { DollarSign, TrendingUp, Shield, Award, Calculator, PieChart } from "lucide-react"
+import { Shield, Calculator, PieChart } from "lucide-react"
 
 export function FinancialReadiness() {
-  const inclusions = [
-    {
-      icon: Award,
-      title: "Faculty & Trainer Certification",
-      description: "Industry-recognized credentials for academic positions",
-    },
-    {
-      icon: Shield,
-      title: "Residential Bootcamp + Monthly Sessions",
-      description: "All accommodation, meals, and learning materials included",
-    },
-    {
-      icon: TrendingUp,
-      title: "Career Readiness & Placement Support",
-      description: "Job placement assistance and interview preparation",
-    },
-    {
-      icon: PieChart,
-      title: "Access to Academic Networks",
-      description: "Connections with top institutions and industry leaders",
-    },
-  ]
+  
 
-  const roiBreakdown = [
-    { category: "Year 1 Earnings", amount: "₹8-15L", description: "Starting academic positions" },
-    { category: "Year 2-3 Growth", amount: "₹12-20L", description: "Established faculty roles" },
-    { category: "Senior Positions", amount: "₹18-25L", description: "Dean/Director level roles" },
-    { category: "Consulting Add-on", amount: "₹5-10L", description: "Additional consulting income" },
-  ]
+ 
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">

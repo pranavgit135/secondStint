@@ -238,7 +238,7 @@ export function WhoIsThisFor() {
                   <h4 className="font-bold text-white mb-2">{story.role}</h4>
                   <p className="text-amber-300 text-sm mb-2">{story.institution}</p>
                   <p className="text-green-400 font-semibold mb-2">{story.salary}</p>
-                  <p className="text-slate-300 text-xs italic">"{story.satisfaction}"</p>
+                  <p className="text-slate-300 text-xs italic">&quot;{story.satisfaction}&quot;</p>
                 </CardContent>
               </Card>
             ))}

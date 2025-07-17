@@ -360,229 +360,229 @@ function AssessmentCallBooking({ trigger }: { trigger: React.ReactNode }) {
 }
 
 // Professional Assessment Component
-function CareerReadinessAssessment() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<number[]>([])
-  const [showResults, setShowResults] = useState(false)
-  const [score, setScore] = useState(0)
+// function CareerReadinessAssessment() {
+//   const [currentQuestion, setCurrentQuestion] = useState(0)
+//   const [answers, setAnswers] = useState<number[]>([])
+//   const [showResults, setShowResults] = useState(false)
+//   const [score, setScore] = useState(0)
 
-  const questions = [
-    {
-      question: "How many years of senior leadership experience do you have?",
-      options: ["5-10 years", "10-15 years", "15-20 years", "20+ years"],
-      weights: [1, 2, 3, 4],
-    },
-    {
-      question: "What&apos;s your primary motivation for considering academia?",
-      options: ["Share knowledge & mentor", "Stay professionally active", "Build lasting legacy", "Financial security"],
-      weights: [4, 3, 4, 2],
-    },
-    {
-      question: "How comfortable are you with technology and online learning?",
-      options: ["Very comfortable", "Comfortable", "Somewhat comfortable", "Need support"],
-      weights: [4, 3, 2, 1],
-    },
-    {
-      question: "What&apos;s your preferred time commitment for this transition?",
-      options: ["Full-time focus", "Part-time (20+ hrs/week)", "Flexible schedule", "Minimal commitment"],
-      weights: [4, 3, 2, 1],
-    },
-    {
-      question: "How important is institutional prestige to you?",
-      options: ["Very important", "Important", "Somewhat important", "Not important"],
-      weights: [3, 4, 2, 1],
-    },
-  ]
+//   const questions = [
+//     {
+//       question: "How many years of senior leadership experience do you have?",
+//       options: ["5-10 years", "10-15 years", "15-20 years", "20+ years"],
+//       weights: [1, 2, 3, 4],
+//     },
+//     {
+//       question: "What&apos;s your primary motivation for considering academia?",
+//       options: ["Share knowledge & mentor", "Stay professionally active", "Build lasting legacy", "Financial security"],
+//       weights: [4, 3, 4, 2],
+//     },
+//     {
+//       question: "How comfortable are you with technology and online learning?",
+//       options: ["Very comfortable", "Comfortable", "Somewhat comfortable", "Need support"],
+//       weights: [4, 3, 2, 1],
+//     },
+//     {
+//       question: "What&apos;s your preferred time commitment for this transition?",
+//       options: ["Full-time focus", "Part-time (20+ hrs/week)", "Flexible schedule", "Minimal commitment"],
+//       weights: [4, 3, 2, 1],
+//     },
+//     {
+//       question: "How important is institutional prestige to you?",
+//       options: ["Very important", "Important", "Somewhat important", "Not important"],
+//       weights: [3, 4, 2, 1],
+//     },
+//   ]
 
-  const handleAnswer = (answerIndex: number) => {
-    const newAnswers = [...answers]
-    newAnswers[currentQuestion] = answerIndex
-    setAnswers(newAnswers)
-  }
+//   const handleAnswer = (answerIndex: number) => {
+//     const newAnswers = [...answers]
+//     newAnswers[currentQuestion] = answerIndex
+//     setAnswers(newAnswers)
+//   }
 
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
-    } else {
-      calculateScore([...answers])
-    }
-  }
+//   const handleNext = () => {
+//     if (currentQuestion < questions.length - 1) {
+//       setCurrentQuestion(currentQuestion + 1)
+//     } else {
+//       calculateScore([...answers])
+//     }
+//   }
 
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1)
-    }
-  }
+//   const handlePrevious = () => {
+//     if (currentQuestion > 0) {
+//       setCurrentQuestion(currentQuestion - 1)
+//     }
+//   }
 
-  const calculateScore = (finalAnswers: number[]) => {
-    let totalScore = 0
-    finalAnswers.forEach((answerIndex, questionIndex) => {
-      if (answerIndex !== undefined) {
-        totalScore += questions[questionIndex].weights[answerIndex]
-      }
-    })
-    setScore(totalScore)
-    setShowResults(true)
-  }
+//   const calculateScore = (finalAnswers: number[]) => {
+//     let totalScore = 0
+//     finalAnswers.forEach((answerIndex, questionIndex) => {
+//       if (answerIndex !== undefined) {
+//         totalScore += questions[questionIndex].weights[answerIndex]
+//       }
+//     })
+//     setScore(totalScore)
+//     setShowResults(true)
+//   }
 
-  const getRecommendation = () => {
-    if (score >= 16) {
-      return {
-        level: "Excellent Fit",
-        color: "text-green-600",
-        bgColor: "bg-green-50",
-        message: "You&apos;re an ideal candidate for our program. Your experience and motivation align perfectly.",
-        nextStep: "Schedule a priority consultation",
-        priority: true,
-      }
-    } else if (score >= 12) {
-      return {
-        level: "Good Fit",
-        color: "text-blue-600",
-        bgColor: "bg-blue-50",
-        message: "You have strong potential for success. We recommend discussing your specific goals.",
-        nextStep: "Book a detailed assessment call",
-        priority: false,
-      }
-    } else if (score >= 8) {
-      return {
-        level: "Potential Fit",
-        color: "text-yellow-600",
-        bgColor: "bg-yellow-50",
-        message: "With some preparation, you could be successful. Let&apos;s explore your options.",
-        nextStep: "Join our information session",
-        priority: false,
-      }
-    } else {
-      return {
-        level: "Needs Preparation",
-        color: "text-orange-600",
-        bgColor: "bg-orange-50",
-        message: "Consider building more experience before joining. We can guide your preparation.",
-        nextStep: "Download our preparation guide",
-        priority: false,
-      }
-    }
-  }
+//   const getRecommendation = () => {
+//     if (score >= 16) {
+//       return {
+//         level: "Excellent Fit",
+//         color: "text-green-600",
+//         bgColor: "bg-green-50",
+//         message: "You&apos;re an ideal candidate for our program. Your experience and motivation align perfectly.",
+//         nextStep: "Schedule a priority consultation",
+//         priority: true,
+//       }
+//     } else if (score >= 12) {
+//       return {
+//         level: "Good Fit",
+//         color: "text-blue-600",
+//         bgColor: "bg-blue-50",
+//         message: "You have strong potential for success. We recommend discussing your specific goals.",
+//         nextStep: "Book a detailed assessment call",
+//         priority: false,
+//       }
+//     } else if (score >= 8) {
+//       return {
+//         level: "Potential Fit",
+//         color: "text-yellow-600",
+//         bgColor: "bg-yellow-50",
+//         message: "With some preparation, you could be successful. Let&apos;s explore your options.",
+//         nextStep: "Join our information session",
+//         priority: false,
+//       }
+//     } else {
+//       return {
+//         level: "Needs Preparation",
+//         color: "text-orange-600",
+//         bgColor: "bg-orange-50",
+//         message: "Consider building more experience before joining. We can guide your preparation.",
+//         nextStep: "Download our preparation guide",
+//         priority: false,
+//       }
+//     }
+//   }
 
-  const resetAssessment = () => {
-    setCurrentQuestion(0)
-    setAnswers([])
-    setShowResults(false)
-    setScore(0)
-  }
+//   const resetAssessment = () => {
+//     setCurrentQuestion(0)
+//     setAnswers([])
+//     setShowResults(false)
+//     setScore(0)
+//   }
 
-  if (showResults) {
-    const recommendation = getRecommendation()
-    return (
-      <Card className="border-2 border-blue-200 shadow-xl">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl text-slate-800">Your Assessment Results</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className={`text-center p-6 rounded-xl ${recommendation.bgColor}`}>
-            <h3 className={`text-2xl font-bold ${recommendation.color} mb-2`}>{recommendation.level}</h3>
-            <p className="text-slate-700 mb-4">{recommendation.message}</p>
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <span className="text-sm text-slate-600">Readiness Score:</span>
-              <span className={`text-xl font-bold ${recommendation.color}`}>{score}/20</span>
-            </div>
-            <Progress value={(score / 20) * 100} className="w-full mb-4" />
-          </div>
+//   if (showResults) {
+//     const recommendation = getRecommendation()
+//     return (
+//       <Card className="border-2 border-blue-200 shadow-xl">
+//         <CardHeader className="text-center">
+//           <CardTitle className="text-2xl text-slate-800">Your Assessment Results</CardTitle>
+//         </CardHeader>
+//         <CardContent className="space-y-6">
+//           <div className={`text-center p-6 rounded-xl ${recommendation.bgColor}`}>
+//             <h3 className={`text-2xl font-bold ${recommendation.color} mb-2`}>{recommendation.level}</h3>
+//             <p className="text-slate-700 mb-4">{recommendation.message}</p>
+//             <div className="flex items-center justify-center space-x-2 mb-4">
+//               <span className="text-sm text-slate-600">Readiness Score:</span>
+//               <span className={`text-xl font-bold ${recommendation.color}`}>{score}/20</span>
+//             </div>
+//             <Progress value={(score / 20) * 100} className="w-full mb-4" />
+//           </div>
 
-          <div className="space-y-4">
-            {recommendation.priority ? (
-              <PriorityConsultationBooking
-                trigger={
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-3">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {recommendation.nextStep}
-                  </Button>
-                }
-              />
-            ) : (
-              <AssessmentCallBooking
-                trigger={
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {recommendation.nextStep}
-                  </Button>
-                }
-              />
-            )}
-            <Button variant="outline" onClick={resetAssessment} className="w-full bg-transparent">
-              Retake Assessment
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }
+//           <div className="space-y-4">
+//             {recommendation.priority ? (
+//               <PriorityConsultationBooking
+//                 trigger={
+//                   <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-3">
+//                     <Calendar className="w-4 h-4 mr-2" />
+//                     {recommendation.nextStep}
+//                   </Button>
+//                 }
+//               />
+//             ) : (
+//               <AssessmentCallBooking
+//                 trigger={
+//                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3">
+//                     <Calendar className="w-4 h-4 mr-2" />
+//                     {recommendation.nextStep}
+//                   </Button>
+//                 }
+//               />
+//             )}
+//             <Button variant="outline" onClick={resetAssessment} className="w-full bg-transparent">
+//               Retake Assessment
+//             </Button>
+//           </div>
+//         </CardContent>
+//       </Card>
+//     )
+//   }
 
-  const currentAnswer = answers[currentQuestion]
-  const canProceed = currentAnswer !== undefined
+//   const currentAnswer = answers[currentQuestion]
+//   const canProceed = currentAnswer !== undefined
 
-  return (
-    <Card className="border-2 border-blue-200 shadow-xl">
-      <CardHeader>
-        <CardTitle className="text-xl text-slate-800">Career Readiness Assessment</CardTitle>
-        <CardDescription>
-          Question {currentQuestion + 1} of {questions.length}
-        </CardDescription>
-        <Progress value={((currentQuestion + 1) / questions.length) * 100} className="w-full" />
-      </CardHeader>
-      <CardContent
-        showNavigation={true}
-        onNext={handleNext}
-        onPrevious={handlePrevious}
-        navigationDisabled={{
-          previous: currentQuestion === 0,
-          next: !canProceed,
-        }}
-        className="space-y-6"
-      >
-        <h3 className="text-lg font-semibold text-slate-800">{questions[currentQuestion].question}</h3>
-        <div className="space-y-3">
-          {questions[currentQuestion].options.map((option, index) => (
-            <Button
-              key={index}
-              variant={currentAnswer === index ? "default" : "outline"}
-              className={`w-full text-left justify-start p-4 h-auto transition-all duration-200 ${
-                currentAnswer === index
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "hover:bg-blue-50 hover:border-blue-300 bg-transparent"
-              }`}
-              onClick={() => handleAnswer(index)}
-            >
-              <div className="flex items-center space-x-3">
-                <div
-                  className={`w-4 h-4 rounded-full border-2 ${
-                    currentAnswer === index ? "bg-white border-white" : "border-slate-300"
-                  }`}
-                >
-                  {currentAnswer === index && <div className="w-2 h-2 bg-blue-600 rounded-full m-0.5"></div>}
-                </div>
-                <span>{option}</span>
-              </div>
-            </Button>
-          ))}
-        </div>
+//   return (
+//     <Card className="border-2 border-blue-200 shadow-xl">
+//       <CardHeader>
+//         <CardTitle className="text-xl text-slate-800">Career Readiness Assessment</CardTitle>
+//         <CardDescription>
+//           Question {currentQuestion + 1} of {questions.length}
+//         </CardDescription>
+//         <Progress value={((currentQuestion + 1) / questions.length) * 100} className="w-full" />
+//       </CardHeader>
+//       <CardContent
+//         showNavigation={true}
+//         onNext={handleNext}
+//         onPrevious={handlePrevious}
+//         navigationDisabled={{
+//           previous: currentQuestion === 0,
+//           next: !canProceed,
+//         }}
+//         className="space-y-6"
+//       >
+//         <h3 className="text-lg font-semibold text-slate-800">{questions[currentQuestion].question}</h3>
+//         <div className="space-y-3">
+//           {questions[currentQuestion].options.map((option, index) => (
+//             <Button
+//               key={index}
+//               variant={currentAnswer === index ? "default" : "outline"}
+//               className={`w-full text-left justify-start p-4 h-auto transition-all duration-200 ${
+//                 currentAnswer === index
+//                   ? "bg-blue-600 text-white border-blue-600"
+//                   : "hover:bg-blue-50 hover:border-blue-300 bg-transparent"
+//               }`}
+//               onClick={() => handleAnswer(index)}
+//             >
+//               <div className="flex items-center space-x-3">
+//                 <div
+//                   className={`w-4 h-4 rounded-full border-2 ${
+//                     currentAnswer === index ? "bg-white border-white" : "border-slate-300"
+//                   }`}
+//                 >
+//                   {currentAnswer === index && <div className="w-2 h-2 bg-blue-600 rounded-full m-0.5"></div>}
+//                 </div>
+//                 <span>{option}</span>
+//               </div>
+//             </Button>
+//           ))}
+//         </div>
 
-        {/* Progress Indicator */}
-        <div className="flex justify-center space-x-2 pt-4">
-          {questions.map((_, index) => (
-            <div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index <= currentQuestion ? "bg-blue-600" : "bg-slate-300"
-              } ${index === currentQuestion ? "w-6" : ""}`}
-            />
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
+//         {/* Progress Indicator */}
+//         <div className="flex justify-center space-x-2 pt-4">
+//           {questions.map((_, index) => (
+//             <div
+//               key={index}
+//               className={`w-2 h-2 rounded-full transition-all duration-300 ${
+//                 index <= currentQuestion ? "bg-blue-600" : "bg-slate-300"
+//               } ${index === currentQuestion ? "w-6" : ""}`}
+//             />
+//           ))}
+//         </div>
+//       </CardContent>
+//     </Card>
+//   )
+// }
 
 // Priority Consultation Booking Component
 function PriorityConsultationBooking({ trigger }: { trigger: React.ReactNode }) {
@@ -1119,128 +1119,12 @@ function SuccessStories() {
 }
 
 // ROI Calculator Component
-function ROICalculator() {
-  const [currentSalary, setCurrentSalary] = useState(2000000)
-  const [expectedSalary, setExpectedSalary] = useState(1800000)
-  const [consultingIncome, setConsultingIncome] = useState(600000)
-  const [programCost] = useState(900000)
 
-  const calculateROI = () => {
-    const totalNewIncome = expectedSalary + consultingIncome
-    const monthlyROI = (totalNewIncome - programCost) / 12
-    const breakEvenMonths = Math.ceil(programCost / (totalNewIncome / 12))
-    const yearlyROI = ((totalNewIncome - programCost) / programCost) * 100
-
-    return {
-      totalNewIncome,
-      monthlyROI,
-      breakEvenMonths,
-      yearlyROI,
-    }
-  }
-
-  const roi = calculateROI()
-
-  return (
-    <Card className="border-2 border-green-200 shadow-xl">
-      <CardHeader>
-        <CardTitle className="text-2xl text-slate-800 flex items-center">
-          <Calculator className="w-6 h-6 mr-2 text-green-600" />
-          ROI Calculator
-        </CardTitle>
-        <CardDescription>Calculate your potential return on investment</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="current-salary">Current Annual Package (₹)</Label>
-              <Input
-                id="current-salary"
-                type="number"
-                value={currentSalary}
-                onChange={(e) => setCurrentSalary(Number(e.target.value))}
-                className="text-lg"
-              />
-            </div>
-            <div>
-              <Label htmlFor="expected-salary">Expected Academic Salary (₹)</Label>
-              <Input
-                id="expected-salary"
-                type="number"
-                value={expectedSalary}
-                onChange={(e) => setExpectedSalary(Number(e.target.value))}
-                className="text-lg"
-              />
-            </div>
-            <div>
-              <Label htmlFor="consulting-income">Additional Consulting Income (₹)</Label>
-              <Input
-                id="consulting-income"
-                type="number"
-                value={consultingIncome}
-                onChange={(e) => setConsultingIncome(Number(e.target.value))}
-                className="text-lg"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="bg-slate-50 p-4 rounded-lg">
-              <h4 className="font-semibold text-slate-800 mb-3">Your ROI Analysis</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Program Investment:</span>
-                  <span className="font-semibold">₹{(programCost / 100000).toFixed(1)}L</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Total New Income:</span>
-                  <span className="font-semibold text-green-600">₹{(roi.totalNewIncome / 100000).toFixed(1)}L</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Monthly Surplus:</span>
-                  <span className="font-semibold text-green-600">₹{(roi.monthlyROI / 1000).toFixed(0)}K</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-600">Break-even Time:</span>
-                  <span className="font-semibold">{roi.breakEvenMonths} months</span>
-                </div>
-                <div className="flex justify-between border-t pt-2">
-                  <span className="text-slate-600">Annual ROI:</span>
-                  <span className="font-bold text-green-600 text-lg">{roi.yearlyROI.toFixed(0)}%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h5 className="font-semibold text-blue-800 mb-2">Additional Benefits</h5>
-              <ul className="text-sm grid grid-cols-2 text-blue-700 space-y-1">
-                <li>• Flexible working hours</li>
-                <li>• Prestigious institutional affiliation</li>
-                <li>• Continuous learning opportunities</li>
-                <li>• Network expansion</li>
-                <li>• Legacy building</li>
-              </ul>
-            </div>
-          
-        
-
-        <div className="text-center pt-4 border-t">
-          <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
-            <FileText className="w-4 h-4 mr-2" />
-            Get Detailed Financial Projection
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
 
 // Advanced Program Slider
 function ProgramSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(false) // Disabled by default for mature audience
+
 
   const slides = [
     {
@@ -1739,7 +1623,6 @@ function ProgramSlider() {
 
 // Main Component
 export default function HomePage() {
-  const [isDrawing, setIsDrawing] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -1747,13 +1630,7 @@ export default function HomePage() {
   }
 
 
-  const handleClick = () => {
-    setIsDrawing(true)
-    // Reset after animation completes
-    setTimeout(() => {
-      setIsDrawing(false)
-    }, 3000)
-  }
+
   return (
     <div className="min-h-screen bg-white">
       
@@ -2580,582 +2457,7 @@ export default function HomePage() {
   )
 }
 
-// Advanced Countdown CTA Component
-function CountdownCTA() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
-  const [isUrgent, setIsUrgent] = useState(false)
 
-  // Set target date (30 days from now for demo)
-  const targetDate = new Date()
-  targetDate.setDate(targetDate.getDate() + 30)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
-
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-        setTimeLeft({ days, hours, minutes, seconds })
-        setIsUrgent(days <= 7)
-      }
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-20 h-20 bg-red-500 rounded-full animate-pulse"></div>
-        <div className="absolute top-32 right-20 w-16 h-16 bg-orange-500 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-yellow-500 rounded-full animate-ping"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Urgency Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-red-100 text-red-800 px-4 py-2 rounded-full mb-4 animate-pulse">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
-              <span className="font-semibold text-sm uppercase tracking-wide">Limited Time Offer</span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
-              Early Bird Enrollment
-
-              <span className="relative inline-block">
-            <span className="relative z-10 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent pl-2 pr-2">{ " "}
-            Ends Soon!</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-300 opacity-20 border-2 border-orange-500 rounded-md animate-slide-in"></span>
-          </span>
-              
-              {/* <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                {" "}
-                Ends Soon!
-              </span> */}
-            </h2>
-            <style jsx>{`
-        @keyframes slide-in {
-          0% {
-            width: 0%;
-            opacity: 0;
-          }
-          50% {
-            opacity: 0.2;
-          }
-          100% {
-            width: 100%;
-            opacity: 0.2;
-          }
-        }
-        
-        .animate-slide-in {
-          animation: slide-in 2s ease-out forwards;
-          transform-origin: left center;
-        }
-      `}</style>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Secure your spot in the next cohort and save ₹2 Lakhs with our early bird pricing. Only 25 seats
-              available!
-            </p>
-          </div>
-
-          {/* Countdown Timer */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 mb-12 border-4 border-red-200">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">Enrollment Closes In:</h3>
-              <p className="text-slate-600">Don&apos;t miss your chance to transform your career</p>
-            </div>
-
-            <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
-              {[
-                { label: "Days", value: timeLeft.days },
-                { label: "Hours", value: timeLeft.hours },
-                { label: "Minutes", value: timeLeft.minutes },
-                { label: "Seconds", value: timeLeft.seconds },
-              ].map((unit, index) => (
-                <div key={unit.label} className="text-center">
-                  <div
-                    className={`bg-gradient-to-br ${isUrgent ? "from-red-500 to-red-600" : "from-blue-500 to-blue-600"} text-white rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all duration-300`}
-                  >
-                    <div className="text-3xl lg:text-4xl font-bold">{unit.value.toString().padStart(2, "0")}</div>
-                  </div>
-                  <div className="text-sm font-medium text-slate-600 mt-2 uppercase tracking-wide">{unit.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Pricing Comparison */}
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-slate-50 p-6 rounded-xl border-2 border-slate-200">
-                <div className="text-center">
-                  <p className="text-sm text-slate-500 uppercase tracking-wide mb-2">Regular Price</p>
-                  <p className="text-3xl font-bold text-slate-400 line-through">₹11,00,000</p>
-                </div>
-              </div>
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-2 border-green-300 relative">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-green-600 text-white px-4 py-1">Save ₹2L</Badge>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm text-green-700 uppercase tracking-wide mb-2">Early Bird Price</p>
-                  <p className="text-4xl font-bold text-green-600">₹9,00,000</p>
-                  <p className="text-sm text-green-600 mt-1">+ Exclusive Bonuses Worth ₹50,000</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Scarcity Indicators */}
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-red-50 p-4 rounded-lg border border-red-200 text-center">
-                <div className="text-2xl font-bold text-red-600">8</div>
-                <div className="text-sm text-red-700">Seats Remaining</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 text-center">
-                <div className="text-2xl font-bold text-blue-600">147</div>
-                <div className="text-sm text-blue-700">Applications Received</div>
-              </div>
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200 text-center">
-                <div className="text-2xl font-bold text-green-600">17</div>
-                <div className="text-sm text-green-700">Enrolled Today</div>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <AssessmentCallBooking
-                trigger={
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-8 py-4 text-lg shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    <Zap className="w-5 h-5 mr-2" />
-                    Secure My Early Bird Spot
-                  </Button>
-                }
-              />
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-slate-300 text-slate-700 hover:border-blue-500 px-8 py-4 text-lg bg-white"
-              >
-                <Calculator className="w-5 h-5 mr-2" />
-                Calculate My Savings
-              </Button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex items-center justify-center space-x-8 mt-8 text-sm text-slate-600">
-              <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-green-500" />
-                <span>Money-back Guarantee</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>No Hidden Fees</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Award className="w-4 h-4 text-green-500" />
-                <span>Industry Certified</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bonus Section */}
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-8 shadow-2xl">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-2">Exclusive Early Bird Bonuses</h3>
-              <p className="text-purple-100">Available only for the first 25 enrollments</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "1-on-1 Career Coaching",
-                  value: "₹25,000 Value",
-                  description: "3 personalized sessions with industry experts",
-                  icon: UserCheck,
-                },
-                {
-                  title: "LinkedIn Profile Optimization",
-                  value: "₹15,000 Value",
-                  description: "Professional makeover for academic positioning",
-                  icon: Globe,
-                },
-                {
-                  title: "Research Paper Template Kit",
-                  value: "₹10,000 Value",
-                  description: "Ready-to-use templates for academic writing",
-                  icon: FileText,
-                },
-              ].map((bonus, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                      <bonus.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white">{bonus.title}</h4>
-                      <p className="text-sm text-yellow-300">{bonus.value}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-purple-100">{bonus.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Advanced Testimonials Carousel
-function TestimonialsCarousel() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true)
-
-  const testimonials = [
-    {
-      name: "Dr. Suresh Menon",
-      age: 54,
-      previousRole: "CTO, Tech Mahindra",
-      currentRole: "Professor of Practice, IIT Bombay",
-      image: "/placeholder.svg?height=100&width=100",
-      quote:
-        "The transition was smoother than I imagined. Within 8 months, I was teaching graduate students and consulting for Fortune 500 companies. My industry experience became my greatest teaching asset.",
-      rating: 5,
-      results: ["₹22L annual package", "3 consulting contracts", "Published 2 research papers"],
-      videoUrl: "#",
-    },
-    {
-      name: "Meera Krishnan",
-      age: 49,
-      previousRole: "VP Marketing, Unilever",
-      currentRole: "Dean of Executive Education, XLRI",
-      image: "/placeholder.svg?height=100&width=100",
-      quote:
-        "After 22 years in corporate, I wanted to give back while staying professionally engaged. This program didn&apos;t just help me transition—it helped me thrive in academia.",
-      rating: 5,
-      results: ["₹28L total income", "50+ executives trained", "Industry recognition"],
-      videoUrl: "#",
-    },
-    {
-      name: "Rajesh Gupta",
-      age: 52,
-      previousRole: "CEO, Manufacturing Firm",
-      currentRole: "Visiting Faculty & Executive Coach",
-      image: "/placeholder.svg?height=100&width=100",
-      quote:
-        "I was worried about relevance after stepping down as CEO. Now I&apos;m busier than ever, teaching at multiple institutions and running my coaching practice. Best decision I ever made.",
-      rating: 5,
-      results: ["Multiple income streams", "Work-life balance", "Global recognition"],
-      videoUrl: "#",
-    },
-  ]
-
-  useEffect(() => {
-    if (isAutoPlay) {
-      const timer = setInterval(() => {
-        setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-      }, 5000)
-      return () => clearInterval(timer)
-    }
-  }, [isAutoPlay, testimonials.length])
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">What Our Graduates Say</h2>
-            <p className="text-xl text-slate-600">
-              Real stories from professionals who successfully made the transition
-            </p>
-          </div>
-
-          <div className="relative">
-            <Card className="border-0 shadow-2xl bg-white overflow-hidden">
-              <CardContent className="p-0">
-                <div className="grid lg:grid-cols-2">
-                  {/* Testimonial Content */}
-                  <div className="p-8 lg:p-12">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <Image
-                        src={testimonials[activeTestimonial].image || "/placeholder.svg"}
-                        alt={testimonials[activeTestimonial].name}
-                        width={80}
-                        height={80}
-                        className="rounded-full border-4 border-blue-200"
-                      />
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-800">{testimonials[activeTestimonial].name}</h3>
-                        <p className="text-sm text-slate-600">Age: {testimonials[activeTestimonial].age}</p>
-                        <div className="flex items-center space-x-1 mt-1">
-                          {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                            <div key={i} className="w-4 h-4 bg-yellow-400 rounded-full"></div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <Quote className="w-8 h-8 text-blue-600 mb-4" />
-                    <blockquote className="text-lg text-slate-700 leading-relaxed mb-6 italic">
-                      "{testimonials[activeTestimonial].quote}"
-                    </blockquote>
-
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm text-slate-500 uppercase tracking-wide mb-2">Previous Role</p>
-                        <p className="font-medium text-slate-700">{testimonials[activeTestimonial].previousRole}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-slate-500 uppercase tracking-wide mb-2">Current Role</p>
-                        <p className="font-medium text-blue-700">{testimonials[activeTestimonial].currentRole}</p>
-                      </div>
-                    </div>
-
-                    <div className="mt-6">
-                      <p className="text-sm text-slate-500 uppercase tracking-wide mb-3">Key Achievements</p>
-                      <div className="space-y-2">
-                        {testimonials[activeTestimonial].results.map((result, idx) => (
-                          <div key={idx} className="flex items-center space-x-2">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span className="text-sm text-slate-700">{result}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white">
-                      <Video className="w-4 h-4 mr-2" />
-                      Watch Full Video
-                    </Button>
-                  </div>
-
-                  {/* Visual Side */}
-                  <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 lg:p-12 text-white flex flex-col justify-center">
-                    <div className="text-center mb-8">
-                      <div className="text-6xl font-bold mb-2">95%</div>
-                      <p className="text-blue-100">Success Rate</p>
-                    </div>
-
-                    <div className="space-y-6">
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                        <div className="text-2xl font-bold">₹18-25L</div>
-                        <p className="text-sm text-blue-100">Average Starting Salary</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                        <div className="text-2xl font-bold">6-8 Months</div>
-                        <p className="text-sm text-blue-100">Average Placement Time</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                        <div className="text-2xl font-bold">500+</div>
-                        <p className="text-sm text-blue-100">Successful Transitions</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-center space-x-4 mt-8">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                className="rounded-full"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === activeTestimonial ? "bg-blue-600 w-8" : "bg-slate-300"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
-                className="rounded-full"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Academic vs Corporate Life Comparison
-function LifestyleComparison() {
-  const [activeTab, setActiveTab] = useState("academic")
-
-  const comparisons = {
-    academic: {
-      title: "Academic Life",
-      subtitle: "Flexible, Meaningful, Prestigious",
-      color: "blue",
-      features: [
-        { icon: Clock, title: "Flexible Schedule", desc: "Set your own hours, work from anywhere" },
-        { icon: Brain, title: "Intellectual Stimulation", desc: "Continuous learning and research opportunities" },
-        { icon: Users, title: "Mentoring Impact", desc: "Shape the next generation of leaders" },
-        { icon: Globe, title: "Global Network", desc: "Connect with academics and industry worldwide" },
-        { icon: Award, title: "Prestigious Affiliation", desc: "Associate with renowned institutions" },
-        { icon: Heart, title: "Work-Life Balance", desc: "More time for family and personal interests" },
-      ],
-      stats: [
-        { value: "4-6 months", label: "Vacation Time" },
-        { value: "20-25 hours", label: "Weekly Teaching" },
-        { value: "₹15-40L", label: "Annual Income" },
-        { value: "Unlimited", label: "Growth Potential" },
-      ],
-    },
-    corporate: {
-      title: "Corporate Life",
-      subtitle: "Structured, Demanding, Competitive",
-      color: "slate",
-      features: [
-        { icon: Briefcase, title: "Fixed Schedule", desc: "9-6 routine with limited flexibility" },
-        { icon: Target, title: "Performance Pressure", desc: "Constant targets and KPI monitoring" },
-        { icon: TrendingUp, title: "Revenue Focus", desc: "Bottom-line driven decision making" },
-        { icon: Clock, title: "Long Hours", desc: "Extended work days and weekend calls" },
-        { icon: DollarSign, title: "High Stress", desc: "Market pressures and competition" },
-        { icon: Users, title: "Limited Impact", desc: "Narrow scope of influence" },
-      ],
-      stats: [
-        { value: "15-20 days", label: "Annual Leave" },
-        { value: "50-60 hours", label: "Weekly Work" },
-        { value: "₹20-50L", label: "Annual Package" },
-        { value: "Age Limited", label: "Career Span" },
-      ],
-    },
-  }
-
-  return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-4">Academic Life vs Corporate Life</h2>
-            <p className="text-xl text-slate-600">Compare the lifestyle and benefits of each career path</p>
-          </div>
-
-          <div className="flex justify-center mb-8">
-            <div className="bg-slate-100 p-2 rounded-lg">
-              <button
-                onClick={() => setActiveTab("academic")}
-                className={`px-6 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "academic" ? "bg-blue-600 text-white shadow-md" : "text-slate-600 hover:text-slate-800"
-                }`}
-              >
-                Academic Life
-              </button>
-              <button
-                onClick={() => setActiveTab("corporate")}
-                className={`px-6 py-3 rounded-md font-medium transition-all duration-300 ${
-                  activeTab === "corporate"
-                    ? "bg-slate-600 text-white shadow-md"
-                    : "text-slate-600 hover:text-slate-800"
-                }`}
-              >
-                Corporate Life
-              </button>
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {Object.entries(comparisons).map(([key, data]) => (
-              <Card
-                key={key}
-                className={`transition-all duration-500 ${
-                  activeTab === key
-                    ? `border-2 border-${data.color}-300 shadow-xl scale-105`
-                    : "border-slate-200 opacity-50"
-                }`}
-              >
-                <CardHeader className="text-center">
-                  <CardTitle className={`text-2xl text-${data.color === "blue" ? "blue" : "slate"}-800`}>
-                    {data.title}
-                  </CardTitle>
-                  <CardDescription className="text-lg">{data.subtitle}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid gap-4">
-                    {data.features.map((feature, index) => (
-                      <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
-                        <div
-                          className={`w-8 h-8 bg-${data.color === "blue" ? "blue" : "slate"}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
-                        >
-                          <feature.icon className={`w-4 h-4 text-${data.color === "blue" ? "blue" : "slate"}-600`} />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-slate-800">{feature.title}</h4>
-                          <p className="text-sm text-slate-600">{feature.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="border-t pt-6">
-                    <h4 className="font-semibold text-slate-800 mb-4">Key Statistics</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      {data.stats.map((stat, index) => (
-                        <div key={index} className="text-center p-3 bg-slate-50 rounded-lg">
-                          <div className={`text-lg font-bold text-${data.color === "blue" ? "blue" : "slate"}-600`}>
-                            {stat.value}
-                          </div>
-                          <div className="text-xs text-slate-600">{stat.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">Ready to Make the Switch?</h3>
-              <p className="text-slate-600 mb-6">
-                Join hundreds of professionals who&apos;ve successfully transitioned to fulfilling academic careers
-              </p>
-              <AssessmentCallBooking
-                trigger={
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-                    <Target className="w-5 h-5 mr-2" />
-                    Start Your Transition Journey
-                  </Button>
-                }
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // Newsletter Signup Section
 function NewsletterSection() {
